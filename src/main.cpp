@@ -13,5 +13,6 @@ int main(int argc, char *argv[])
 
     audioFile.setData();
     audioFile.setChannels();
+    audioFile.printChannel(0);
     return 0;
 }

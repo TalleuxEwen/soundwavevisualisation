@@ -22,9 +22,15 @@ class AudioFile
 
         void setChannels();
 
+        void printChannel(short channel);
+
+        void printChannels();
+
     private:
         std::shared_ptr<Header> _header;
         std::vector<short> _data;
         std::shared_ptr<ArgumentsHandling> _argumentsHandling;
         std::vector<std::vector<short>> _channels;
+        short _channelPrintLength = 500;
+        short _channelPrintHeight = 20;
 };

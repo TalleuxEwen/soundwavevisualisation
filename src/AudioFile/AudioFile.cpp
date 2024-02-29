@@ -154,3 +154,27 @@ void AudioFile::setChannels()
     }
     _data.clear();
 }
+
+void AudioFile::printChannel(short channel)
+{
+    int nbsamplesaverage = _channels[channel].size() / _channelPrintLength;
+
+    for (int i = 0; i < _channelPrintHeight; i++)
+    {
+        for (int j = 0; j < _channelPrintLength; j++)
+        {
+            int average = 0;
+            for (int k = 0; k < nbsamplesaverage; k++)
+            {
+                average += abs(_channels[channel][j * nbsamplesaverage + k]);
+            }
+            average /= nbsamplesaverage;
+            average = average / 32767.0 * _channelPrintHeight;
+            if (average >= _channelPrintHeight - i)
+                std::cout << "*";
+            else
+                std::cout << " ";
+        }
+        std::cout << std::endl;
+    }
+}
